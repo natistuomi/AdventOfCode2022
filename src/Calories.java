@@ -42,16 +42,17 @@ public class Calories {
     }
 
     public void compareCalories(){
-        if(currentCalories > thirdMostCalories){
+        if(currentCalories > mostCalories){
+            thirdMostCalories = secondMostCalories;
+            secondMostCalories = mostCalories;
+            mostCalories = currentCalories;
+        }
+        else if(currentCalories > secondMostCalories){
+            thirdMostCalories = secondMostCalories;
+            secondMostCalories = currentCalories;
+        }
+        else if(currentCalories > thirdMostCalories){
             thirdMostCalories = currentCalories;
-            if (currentCalories > secondMostCalories){
-                thirdMostCalories = secondMostCalories;
-                secondMostCalories = currentCalories;
-                if(currentCalories > mostCalories){
-                    secondMostCalories = mostCalories;
-                    mostCalories = currentCalories;
-                }
-            }
         }
     }
 
