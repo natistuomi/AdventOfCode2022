@@ -10,7 +10,7 @@ public class Calories {
     private double secondMostCalories = 0;
     private double thirdMostCalories = 0;
     private double currentCalories = 0;
-    private String currentline;
+    private String currentLine;
     private final double amountOfLines;
 
     public Calories(String filename, double amountOfLines) {
@@ -36,7 +36,7 @@ public class Calories {
                 compareCalories();
                 currentCalories = 0;
             } else {
-                currentCalories += Double.parseDouble(currentline);
+                currentCalories += Double.parseDouble(currentLine);
             }
         }
     }
@@ -57,7 +57,7 @@ public class Calories {
     }
 
     public boolean lineIsEmpty(){
-        return currentline.equals("");
+        return currentLine.equals("");
     }
 
     public void initializeScanner(){
@@ -69,7 +69,7 @@ public class Calories {
     }
 
     public void getNextLine(){
-        currentline = tgb.nextLine();
+        currentLine = tgb.nextLine();
     }
 
     public double getMostCalories() {
