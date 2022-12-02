@@ -29,24 +29,13 @@ public class Tournament{
         calculateGamePoints();
     }
 
-    public void calculateGamePoints(){
-        incorrectGame();
-        correctGame();
-    }
-
-    public void incorrectGame(){
-        if(shapePlayed[0] == shapePlayed[1]){
-            totalScore[incorrect] += 3;
+    public void getNextLine(){
+        for(int i = 0; i < 2; i++){
+            letterInSpot[i] = "";
         }
-        else if(shapePlayed[1]-shapePlayed[0] == 1 || shapePlayed[1]-shapePlayed[0] == -2){
-            totalScore[incorrect] += 6;
-        }
-        totalScore[incorrect] += shapePlayed[1];
-    }
-
-    public void correctGame(){
-        totalScore[correct] += ((shapePlayed[1]-1)*3);
-        totalScore[correct] += shapePlayed[2];
+        String currentLine = tgb.nextLine();
+        letterInSpot[0] += currentLine.charAt(0);
+        letterInSpot[1] += currentLine.charAt(2);
     }
 
     public void nameShapeValues() {
@@ -76,13 +65,24 @@ public class Tournament{
         }
     }
 
-    public void getNextLine(){
-        for(int i = 0; i < 2; i++){
-            letterInSpot[i] = "";
+    public void calculateGamePoints(){
+        incorrectGame();
+        correctGame();
+    }
+
+    public void incorrectGame(){
+        if(shapePlayed[0] == shapePlayed[1]){
+            totalScore[incorrect] += 3;
         }
-        String currentLine = tgb.nextLine();
-        letterInSpot[0] += currentLine.charAt(0);
-        letterInSpot[1] += currentLine.charAt(2);
+        else if(shapePlayed[1]-shapePlayed[0] == 1 || shapePlayed[1]-shapePlayed[0] == -2){
+            totalScore[incorrect] += 6;
+        }
+        totalScore[incorrect] += shapePlayed[1];
+    }
+
+    public void correctGame(){
+        totalScore[correct] += ((shapePlayed[1]-1)*3);
+        totalScore[correct] += shapePlayed[2];
     }
 
     public void initializeScanner(){

@@ -23,10 +23,6 @@ public class Calories {
         calculateTotalTopThreeCalories();
     }
 
-    public void calculateTotalTopThreeCalories() {
-        totalTopThreeCalories = mostCalories + secondMostCalories + thirdMostCalories;
-    }
-
     public void calculateElfsCalories(){
         while(tgb.hasNextLine()) {
             getNextLine();
@@ -37,6 +33,14 @@ public class Calories {
                 currentCalories += Double.parseDouble(currentLine);
             }
         }
+    }
+
+    public void getNextLine(){
+        currentLine = tgb.nextLine();
+    }
+
+    public boolean lineIsEmpty(){
+        return currentLine.equals("");
     }
 
     public void compareCalories(){
@@ -54,8 +58,8 @@ public class Calories {
         }
     }
 
-    public boolean lineIsEmpty(){
-        return currentLine.equals("");
+    public void calculateTotalTopThreeCalories() {
+        totalTopThreeCalories = mostCalories + secondMostCalories + thirdMostCalories;
     }
 
     public void initializeScanner(){
@@ -64,10 +68,6 @@ public class Calories {
         } catch (FileNotFoundException e) {
             System.out.println("Can't find file");
         }
-    }
-
-    public void getNextLine(){
-        currentLine = tgb.nextLine();
     }
 
     public double getMostCalories() {
