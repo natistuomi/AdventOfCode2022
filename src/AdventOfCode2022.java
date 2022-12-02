@@ -1,5 +1,7 @@
 public class AdventOfCode2022 {
-    private static String[] filename = {"input_calories.txt", "input_tournament.txt"};
+    private static String[] filename =
+            {"input_calories.txt",
+            "input_tournament.txt",};
 
     public static void main(String[] args){
         Answer x = new Answer(2, filename[1]);
