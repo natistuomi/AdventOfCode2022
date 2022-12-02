@@ -6,21 +6,19 @@ public class Tournament{
     private Scanner tgb;
     private final String filename;
     private double[] totalScore = {0,0};
-    private final double amountOfLines;
     private final int incorrect = 0;
     private final int correct = 1;
     private String[] letterInSpot = {"", ""};
     private int[] shapePlayed = {0, 0, 0};
 
-    public Tournament(String filename, double amountOfLines) {
+    public Tournament(String filename) {
         this.filename = filename;
-        this.amountOfLines = amountOfLines;
         calculateTournament();
     }
 
     public void calculateTournament(){
         initializeScanner();
-        for(int i = 0; i < amountOfLines; i++){
+        while(tgb.hasNextLine()){
             calculateRound();
         }
     }
@@ -95,7 +93,7 @@ public class Tournament{
         }
     }
 
-    public double getTotalScore() {
+    public double getIncorrectTotalScore() {
         return totalScore[incorrect];
     }
 

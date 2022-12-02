@@ -11,11 +11,9 @@ public class Calories {
     private double thirdMostCalories = 0;
     private double currentCalories = 0;
     private String currentLine;
-    private final double amountOfLines;
 
-    public Calories(String filename, double amountOfLines) {
+    public Calories(String filename) {
         this.filename = filename;
-        this.amountOfLines = amountOfLines;
         calculateMostCalories();
     }
 
@@ -30,7 +28,7 @@ public class Calories {
     }
 
     public void calculateElfsCalories(){
-        for(int i = 1; i <= amountOfLines; i++) {
+        while(tgb.hasNextLine()) {
             getNextLine();
             if (lineIsEmpty()) {
                 compareCalories();
