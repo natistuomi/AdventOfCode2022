@@ -12,7 +12,11 @@ public class Answers {
         System.out.println("");
     }
 
-    public static void dayTwo(){
-        System.out.println("DAY 2 - ");
+    public static void dayTwo() {
+        System.out.println("DAY 2 - Tournament");
+        Tournament a = new Tournament("input_tournament.txt", 2500);
+        System.out.println("Total score in tournament: " + a.getTotalScore());
+        System.out.println("Correct total score in tournament: " + a.getCorrectTotalScore());
+        System.out.println("");
     }
 }
