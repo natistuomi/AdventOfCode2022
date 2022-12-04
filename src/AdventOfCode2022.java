@@ -3,11 +3,12 @@ public class AdventOfCode2022 {
             {"input_calories.txt",
             "input_tournament.txt",
             "input_rucksack.txt",
+            "input_cleanup.txt",
             "input_.txt"};
 
     public static void main(String[] args){
         getAllAnswers();
-        Answer x = new Answer(3, filename[2]);
+        Answer x = new Answer(4, filename[3]);
         System.out.println("\n\n\n" + x.getAnswers());
     }
 
@@ -15,6 +16,7 @@ public class AdventOfCode2022 {
         Answer a = new Answer(1, filename[0]);
         Answer b = new Answer(2, filename[1]);
         Answer c = new Answer(3, filename[2]);
-        System.out.println(a.getAnswers() + b.getAnswers() + c.getAnswers());
+        Answer d = new Answer(4, filename[3]);
+        System.out.println(a.getAnswers() + b.getAnswers() + c.getAnswers() + d.getAnswers());
     }
 }
