@@ -17,7 +17,7 @@ public class Answer {
             "Priorities for badges",
             "Overlapping pairs",
             "Correct top crates"};
-    private final int[] stars = {2,2,2,2,1};
+    private final int[] stars = {2,2,2,2,2};
     private String[] results = {"", ""};
     private int currentDay;
     private String filename;
@@ -51,7 +51,7 @@ public class Answer {
         else if(x == 4){
             Crates a = new Crates(filename);
             results[0] = a.getIncorrectMessage();
-            results[1] = a.getCorrectMessage;
+            results[1] = a.getCorrectMessage() + "WARNING! Both results can't be delivered from the same run";
         }
     }
 

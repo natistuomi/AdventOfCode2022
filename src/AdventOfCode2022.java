@@ -16,6 +16,7 @@ public class AdventOfCode2022 {
         Answer b = new Answer(2, filename[1]);
         Answer c = new Answer(3, filename[2]);
         Answer d = new Answer(4, filename[3]);
-        System.out.println(a.getAnswers() + b.getAnswers() + c.getAnswers() + d.getAnswers());
+        Answer e = new Answer(5, filename[4]);
+        System.out.println(a.getAnswers() + b.getAnswers() + c.getAnswers() + d.getAnswers() + e.getAnswers());
     }
 }

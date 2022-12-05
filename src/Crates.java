@@ -9,44 +9,59 @@ public class Crates {
     private char[][] crate = new char[9][56];
     private int[] instruction = new int[3];
     private int[] amountOfCrates = {-1,-1,-1,-1,-1,-1,-1,-1,-1};
-    private String incorrectMessage;
+    private String incorrectMessage = "";
+    private String correctMessage = "";
 
     public Crates(String filename) {
         this.filename = filename;
-        calculateCrates();
     }
 
-    public void calculateCrates(){
+    public void calculateCrates(int n){
         initializeScanner();
         originalCrates();
         while(tgb.hasNextLine()){
             getNextLine();
-            moveCrates();
+            moveCrates(n);
         }
-        writeMessage();
+        writeMessage(n);
     }
 
-    public void writeMessage(){
-        incorrectMessage = "";
+    public void writeMessage(int n){
         for(int i = 0; i < 9; i++){
-            incorrectMessage += crate[ i ][ amountOfCrates[i] ];
+            if(n == 0){
+                incorrectMessage += crate[ i ][ amountOfCrates[i] ];
+            }
+            else{
+                correctMessage += crate[ i ][ amountOfCrates[i] ];
+            }
         }
     }
 
-    public void moveCrates(){
+    public void moveCrates(int n){
         separateInstructions();
-        followInstructions();
+        followInstructions(n);
     }
 
-    public void followInstructions(){
+    public void followInstructions(int n){
         int amountToMove = instruction[0];
+        int stack = amountToMove;
         int from = instruction[1]-1;
         int to = instruction[2]-1;
         for(int i = 0; i < amountToMove; i++){
-            crate[ to ][ amountOfCrates[to]+1 ] = crate[ from ][ amountOfCrates[from] ];
-            amountOfCrates[ to ] += 1;
-            crate[ from ][ amountOfCrates[from] ] = ' ';
-            amountOfCrates[ from ] -= 1;
+            if(n == 0){
+                crate[ to ][ amountOfCrates[to]+1 ] = crate[ from ][ amountOfCrates[from] ];
+                crate[ from ][ amountOfCrates[from] ] = ' ';
+                amountOfCrates[ from ] -= 1;
+            }
+            else{
+                crate[ to ][ amountOfCrates[to]+1 ] = crate[ from ][ amountOfCrates[from]-stack+1 ];
+                crate[ from ][ amountOfCrates[from]-stack+1 ] = ' ';
+                stack -= 1;
+                if(i == amountToMove-1){
+                    amountOfCrates[from] -= amountToMove;
+                }
+            }
+            amountOfCrates[to] += 1;
         }
     }
 
@@ -90,6 +105,12 @@ public class Crates {
     }
 
     public String getIncorrectMessage() {
+        calculateCrates(0);
         return incorrectMessage;
+    }
+
+    public String getCorrectMessage() {
+        calculateCrates(1);
+        return correctMessage;
     }
 }
