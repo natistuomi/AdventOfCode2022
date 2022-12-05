@@ -4,20 +4,23 @@ public class Answer {
             "Tournament",
             "Rucksack",
             "Cleanup",
-            "Crates"};
+            "Crates",
+            "?"};
     private final String[] firstLabel =
             {"Largest amount of calories",
             "Incorrect total score",
             "Priorities for all rucksacks",
             "Completely overlapping pairs",
-            "Incorrect top crates"};
+            "Incorrect top crates",
+            "?",};
     private final String[] secondLabel =
             {"Total calories of the top three elves",
             "Correct total score",
             "Priorities for badges",
             "Overlapping pairs",
-            "Correct top crates"};
-    private final int[] stars = {2,2,2,2,2};
+            "Correct top crates",
+            "?"};
+    private final int[] stars = {2,2,2,2,2,0};
     private String[] results = {"", ""};
     private int currentDay;
     private String filename;
@@ -50,8 +53,12 @@ public class Answer {
         }
         else if(x == 4){
             Crates a = new Crates(filename);
+            Crates b = new Crates(filename);
             results[0] = a.getIncorrectMessage();
-            results[1] = a.getCorrectMessage() + "WARNING! Both results can't be delivered from the same run";
+            results[1] = b.getCorrectMessage();
+        }
+        else if(x == 5){
+
         }
     }
 

@@ -4,7 +4,8 @@ public class AdventOfCode2022 {
             "input_tournament.txt",
             "input_rucksack.txt",
             "input_cleanup.txt",
-            "input_crates.txt"};
+            "input_crates.txt",
+            "input_.txt"};
 
     public static void main(String[] args){
         Answer x = new Answer(5, filename[4]);
