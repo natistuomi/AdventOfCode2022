@@ -4,11 +4,10 @@ public class AdventOfCode2022 {
             "input_tournament.txt",
             "input_rucksack.txt",
             "input_cleanup.txt",
-            "input_.txt"};
+            "input_crates.txt"};
 
     public static void main(String[] args){
-        getAllAnswers();
-        Answer x = new Answer(4, filename[3]);
+        Answer x = new Answer(5, filename[4]);
         System.out.println("\n\n\n" + x.getAnswers());
     }
 
