@@ -5,10 +5,10 @@ public class AdventOfCode2022 {
             "input_rucksack.txt",
             "input_cleanup.txt",
             "input_crates.txt",
-            "input_.txt"};
+            "input_comm.txt"};
 
     public static void main(String[] args){
-        Answer x = new Answer(5, filename[4]);
+        Answer x = new Answer(6, filename[5]);
         System.out.println("\n\n\n" + x.getAnswers());
     }
 

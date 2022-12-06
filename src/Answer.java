@@ -5,14 +5,14 @@ public class Answer {
             "Rucksack",
             "Cleanup",
             "Crates",
-            "?"};
+            "Comm"};
     private final String[] firstLabel =
             {"Largest amount of calories",
             "Incorrect total score",
             "Priorities for all rucksacks",
             "Completely overlapping pairs",
             "Incorrect top crates",
-            "?",};
+            "Characters processed before start",};
     private final String[] secondLabel =
             {"Total calories of the top three elves",
             "Correct total score",
@@ -58,7 +58,9 @@ public class Answer {
             results[1] = b.getCorrectMessage();
         }
         else if(x == 5){
-
+            Comm a = new Comm(filename);
+            results[0] = String.valueOf(a.getCharacterAmount());
+            results[1] = "";
         }
     }
 
