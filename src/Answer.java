@@ -5,22 +5,25 @@ public class Answer {
             "Rucksack",
             "Cleanup",
             "Crates",
-            "Comm"};
+            "Comm",
+            ""};
     private final String[] firstLabel =
             {"Largest amount of calories",
             "Incorrect total score",
             "Priorities for all rucksacks",
             "Completely overlapping pairs",
             "Incorrect top crates",
-            "Characters processed before start",};
+            "Characters processed before start",
+            ""};
     private final String[] secondLabel =
             {"Total calories of the top three elves",
             "Correct total score",
             "Priorities for badges",
             "Overlapping pairs",
             "Correct top crates",
-            "Characters processed before message"};
-    private final int[] stars = {2,2,2,2,2,1};
+            "Characters processed before message",
+            ""};
+    private final int[] stars = {2,2,2,2,2,2,0};
     private String[] results = {"", ""};
     private int currentDay;
     private String filename;
@@ -58,9 +61,13 @@ public class Answer {
             results[1] = b.getCorrectMessage();
         }
         else if(x == 5){
-            Comm a = new Comm(filename);
-            results[0] = String.valueOf(a.getCharacterAmountStart());
-            results[1] = String.valueOf(a.getCharacterAmountMessage());
+            Comm a = new Comm(filename, 4);
+            Comm b = new Comm(filename, 14);
+            results[0] = String.valueOf(a.getCharacterAmount());
+            results[1] = String.valueOf(b.getCharacterAmount());
+        }
+        else if(x == 6){
+
         }
     }
 

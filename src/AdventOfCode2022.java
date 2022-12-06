@@ -5,7 +5,8 @@ public class AdventOfCode2022 {
             "input_rucksack.txt",
             "input_cleanup.txt",
             "input_crates.txt",
-            "input_comm.txt"};
+            "input_comm.txt",
+            "input_.txt"};
 
     public static void main(String[] args){
         Answer x = new Answer(6, filename[5]);
@@ -18,6 +19,7 @@ public class AdventOfCode2022 {
         Answer c = new Answer(3, filename[2]);
         Answer d = new Answer(4, filename[3]);
         Answer e = new Answer(5, filename[4]);
-        System.out.println(a.getAnswers() + b.getAnswers() + c.getAnswers() + d.getAnswers() + e.getAnswers());
+        Answer f = new Answer(6, filename[5]);
+        System.out.println(a.getAnswers() + b.getAnswers() + c.getAnswers() + d.getAnswers() + e.getAnswers() + f.getAnswers());
     }
 }

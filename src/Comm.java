@@ -5,47 +5,56 @@ import java.util.Scanner;
 public class Comm{
     private Scanner tgb;
     private final String filename;
+    private int n;
     private String line;
     private String comparable = "";
     private int done = 0;
-    private int characterAmountStart = 4;
-    private int characterAmountMessage = 14;
+    private int characterAmount;
 
-    public Comm(String filename) {
+    public Comm(String filename, int n) {
         this.filename = filename;
+        this.n = n;
+        characterAmount = n;
         initializeScanner();
         line = tgb.nextLine();
         calculateCharacters();
     }
 
     public void calculateCharacters(){
-        checkFirstFourChars();
-        while(done == 0){
+        checkFirstChars();
+        while(done == 0 && characterAmount < 4000){
             checkNextCharacter();
+            checkIfDone();
+        }
+    }
+
+    public void checkIfDone(){
+        String s = "" + comparable.charAt(0);
+        for(int i = 1; i < n; i++){
+            if(s.indexOf(comparable.charAt(i)) == -1){
+                s += comparable.charAt(i);
+            }
+        }
+        if(s.length() == n){
+            done = 1;
         }
     }
 
     public void checkNextCharacter(){
-        comparable = "" +  comparable.charAt(1) + comparable.charAt(2) + comparable.charAt(3) + line.charAt(characterAmountStart);
-        checkIfDone();
-        characterAmountStart += 1;
+        String s = "";
+        for(int i = 1; i < n; i++){
+            s += comparable.charAt(i);
+        }
+        s += line.charAt(characterAmount);
+        comparable = s;
+        characterAmount += 1;
     }
 
-    public void checkFirstFourChars(){
-        for(int i = 0; i < 4; i ++){
+    public void checkFirstChars(){
+        for(int i = 0; i < n; i ++){
             comparable += line.charAt(i);
         }
         checkIfDone();
-    }
-
-    public void checkIfDone(){
-        if (comparable.charAt(0) == comparable.charAt(1)) {
-        } else if (comparable.charAt(0) == comparable.charAt(2)) {
-        } else if (comparable.charAt(0) == comparable.charAt(3)) {
-        } else if (comparable.charAt(1) == comparable.charAt(2)) {
-        } else if (comparable.charAt(1) == comparable.charAt(3)) {
-        } else if (comparable.charAt(2) == comparable.charAt(3)) {
-        } else {done = 1;}
     }
 
     public void initializeScanner(){
@@ -56,11 +65,7 @@ public class Comm{
         }
     }
 
-    public int getCharacterAmountStart() {
-        return characterAmountStart;
-    }
-
-    public int getCharacterAmountMessage() {
-        return characterAmountMessage;
+    public int getCharacterAmount() {
+        return characterAmount;
     }
 }
