@@ -8,7 +8,8 @@ public class Comm{
     private String line;
     private String comparable = "";
     private int done = 0;
-    private int characterAmount = 4;
+    private int characterAmountStart = 4;
+    private int characterAmountMessage = 14;
 
     public Comm(String filename) {
         this.filename = filename;
@@ -25,9 +26,9 @@ public class Comm{
     }
 
     public void checkNextCharacter(){
-        comparable = "" +  comparable.charAt(1) + comparable.charAt(2) + comparable.charAt(3) + line.charAt(characterAmount);
+        comparable = "" +  comparable.charAt(1) + comparable.charAt(2) + comparable.charAt(3) + line.charAt(characterAmountStart);
         checkIfDone();
-        characterAmount += 1;
+        characterAmountStart += 1;
     }
 
     public void checkFirstFourChars(){
@@ -55,7 +56,11 @@ public class Comm{
         }
     }
 
-    public int getCharacterAmount() {
-        return characterAmount;
+    public int getCharacterAmountStart() {
+        return characterAmountStart;
+    }
+
+    public int getCharacterAmountMessage() {
+        return characterAmountMessage;
     }
 }

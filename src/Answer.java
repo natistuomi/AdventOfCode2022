@@ -19,8 +19,8 @@ public class Answer {
             "Priorities for badges",
             "Overlapping pairs",
             "Correct top crates",
-            "?"};
-    private final int[] stars = {2,2,2,2,2,0};
+            "Characters processed before message"};
+    private final int[] stars = {2,2,2,2,2,1};
     private String[] results = {"", ""};
     private int currentDay;
     private String filename;
@@ -59,8 +59,8 @@ public class Answer {
         }
         else if(x == 5){
             Comm a = new Comm(filename);
-            results[0] = String.valueOf(a.getCharacterAmount());
-            results[1] = "";
+            results[0] = String.valueOf(a.getCharacterAmountStart());
+            results[1] = String.valueOf(a.getCharacterAmountMessage());
         }
     }
 
