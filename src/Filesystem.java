@@ -11,6 +11,7 @@ public class Filesystem {
     private String[] directoryIncludes = new String [210];
     private int amountOfDirectories = 0;
     private String[] directoryName = new String[210];
+    private int filesFromSlash = 0;
     private double directorySum = 0;
 
     public Filesystem(String filename) {
@@ -23,6 +24,13 @@ public class Filesystem {
         while(tgb.hasNextLine()){
             getNextLine();
             implementLine();
+        }
+        addDirectoriesToSizes();
+    }
+
+    public void addDirectoriesToSizes(){
+        for(int i = 0; i < 210; i++){
+            System.out.println(directoryIncludes[i]);
         }
     }
 
@@ -47,7 +55,8 @@ public class Filesystem {
     }
 
     public void startList(){
-        directoryIncludes[currentDirectory] = "";
+        directoryIncludes[currentDirectory] = currentDirectory + ": ";
+        directorySize[currentDirectory] = 0;
     }
 
     public void changeDirectory(){
