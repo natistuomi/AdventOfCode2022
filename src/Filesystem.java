@@ -11,7 +11,8 @@ public class Filesystem {
     private String[] directoryIncludes = new String [210];
     private int amountOfDirectories = 0;
     private String[] directoryName = new String[210];
-    private int filesFromSlash = 0;
+    private int currentFilesFromSlash = 0;
+    private int[] filesFromSlash = new int[210];
     private double directorySum = 0;
 
     public Filesystem(String filename) {
@@ -26,11 +27,46 @@ public class Filesystem {
             implementLine();
         }
         addDirectoriesToSizes();
+        sumDirectories();
+    }
+
+    public void sumDirectories(){
+        for(int i = 0; i < 210; i++){
+            if(directorySize[i] < 100000){
+                directorySum += directorySize[i];
+            }
+        }
     }
 
     public void addDirectoriesToSizes(){
-        for(int i = 0; i < 210; i++){
-            System.out.println(directoryIncludes[i]);
+        for(int i = 209; i >= 0; i--){
+            addIncludedDirectories(i);
+        }
+    }
+
+    public void addIncludedDirectories(int x){
+        int count = 0;
+        int lastspot = 0;
+        String s = directoryIncludes[x];
+        if(s.length() == 0){}
+        else{
+            for(int i = 0; i < s.length(); i++){
+                if(directoryIncludes[x].charAt(i) == ' '){
+                    count += 1;
+                }
+            }
+            for(int i = 0; i < count; i++){
+                int size;
+                if(i == 0){
+                    size = Integer.parseInt( s.substring(lastspot,s.indexOf(' ')) );
+                    lastspot = s.indexOf(' ')+1;
+                }
+                else{
+                    size = Integer.parseInt( s.substring(lastspot, s.indexOf(' ', lastspot)) );
+                    lastspot = s.indexOf(' ', lastspot) +1;
+                }
+                directorySize[x] += size;
+            }
         }
     }
 
@@ -46,6 +82,7 @@ public class Filesystem {
         amountOfDirectories += 1;
         directoryName[amountOfDirectories] = currentLine.substring(4);
         directoryIncludes[currentDirectory] += amountOfDirectories + " ";
+        filesFromSlash[amountOfDirectories] = currentFilesFromSlash + 1;
     }
 
     public void addFileToDirectory(){
@@ -55,19 +92,22 @@ public class Filesystem {
     }
 
     public void startList(){
-        directoryIncludes[currentDirectory] = currentDirectory + ": ";
+        directoryIncludes[currentDirectory] = "";
         directorySize[currentDirectory] = 0;
     }
 
     public void changeDirectory(){
         while(currentLine.charAt(5) == '.'){
             getNextLine();
+            currentFilesFromSlash -= 1;
         }
         String s = currentLine.substring(5);
         for(int i = 0; i < amountOfDirectories; i++){
             int x = amountOfDirectories - i;
-            if(directoryName[x].equals(s)){
+            if(directoryName[x].equals(s) && filesFromSlash[x] == currentFilesFromSlash+1){
                 currentDirectory = x;
+                i = 1000;
+                currentFilesFromSlash += 1;
             }
         }
     }
@@ -90,6 +130,7 @@ public class Filesystem {
             tgb = new Scanner(new File(filename));
             getNextLine();
             directoryName[0] = "/";
+            filesFromSlash[0] = 0;
         } catch (FileNotFoundException e) {
             System.out.println("Can't find file");
         }
