@@ -6,7 +6,7 @@ public class Answer {
             "Cleanup",
             "Crates",
             "Comm",
-            ""};
+            "Filesystem"};
     private final String[] firstLabel =
             {"Largest amount of calories",
             "Incorrect total score",
@@ -14,7 +14,7 @@ public class Answer {
             "Completely overlapping pairs",
             "Incorrect top crates",
             "Characters processed before start",
-            ""};
+            "Sum of directories under 100000"};
     private final String[] secondLabel =
             {"Total calories of the top three elves",
             "Correct total score",
@@ -67,7 +67,9 @@ public class Answer {
             results[1] = String.valueOf(b.getCharacterAmount());
         }
         else if(x == 6){
-
+            Filesystem a = new Filesystem(filename);
+            results[0] = String.valueOf(a.getDirectorySum());
+            results[1] = "";
         }
     }
 

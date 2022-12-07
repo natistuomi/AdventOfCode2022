@@ -6,10 +6,10 @@ public class AdventOfCode2022 {
             "input_cleanup.txt",
             "input_crates.txt",
             "input_comm.txt",
-            "input_.txt"};
+            "input_filesystem.txt"};
 
     public static void main(String[] args){
-        Answer x = new Answer(6, filename[5]);
+        Answer x = new Answer(7, filename[6]);
         System.out.println("\n\n\n" + x.getAnswers());
     }
 
