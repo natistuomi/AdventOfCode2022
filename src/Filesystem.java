@@ -32,8 +32,10 @@ public class Filesystem {
 
     public void sumDirectories(){
         for(int i = 0; i < 210; i++){
-            if(directorySize[i] < 100000){
+            System.out.println(directorySize[i]);
+            if(directorySize[i] <= 100000){
                 directorySum += directorySize[i];
+                System.out.println("Added!");
             }
         }
     }
@@ -48,10 +50,9 @@ public class Filesystem {
         int count = 0;
         int lastspot = 0;
         String s = directoryIncludes[x];
-        if(s.length() == 0){}
-        else{
+        if(s.length() != 0){
             for(int i = 0; i < s.length(); i++){
-                if(directoryIncludes[x].charAt(i) == ' '){
+                if(s.charAt(i) == ' '){
                     count += 1;
                 }
             }
