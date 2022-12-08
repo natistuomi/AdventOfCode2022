@@ -41,18 +41,29 @@ public class Treehouse {
     }
 
     public boolean stillVisible(int n, int x){
+        int[] control = {0,0,0,0};
+        int height = grid[n][x];
         for(int i  = 0; i < x; i++){
-            if(grid[n][i] >= grid[n][x]){return false;}
+            if(grid[n][i] >= height){
+                control[0] = 1;
+            }
         }
         for(int i = currentLine.length()-1; i > x; i--){
-            if(grid[n][i] >= grid[n][x]){return false;}
+            if(grid[n][i] >= height){
+                control[1] = 1;
+            }
         }
         for(int i = 0; i < n; i++){
-            if(grid[i][x] == grid[n][x]){return false;}
+            if(grid[i][x] == height){
+                control[2] = 1;
+            }
         }
         for(int i = lineNr; i > n; i--){
-            if(grid[i][x] == grid[n][x]){return false;}
+            if(grid[i][x] == height){
+                control[3] = 1;
+            }
         }
+        if(control[0]+control[1]+control[2]+control[3] == 4){return false;}
         return true;
     }
 
