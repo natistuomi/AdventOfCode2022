@@ -10,7 +10,7 @@ public class AdventOfCode2022 {
             "input_treehouse.txt"};
 
     public static void main(String[] args){
-        Answer x = new Answer(8, filename[7]);
+        Answer x = new Answer(7, filename[6]);
         System.out.println("\n\n\n" + x.getAnswers());
     }
 

@@ -70,8 +70,8 @@ public class Answer {
             results[1] = String.valueOf(b.getCharacterAmount());
         }
         else if(x == 6){
-            Filesystem a = new Filesystem(filename);
-            results[0] = String.valueOf(a.getDirectorySum());
+            Filesystem2 a = new Filesystem2(filename);
+            results[0] = String.valueOf(a.getSizeSum());
             results[1] = "";
         }
         else if(x == 7){
