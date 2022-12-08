@@ -6,7 +6,8 @@ public class Answer {
             "Cleanup",
             "Crates",
             "Comm",
-            "Filesystem"};
+            "Filesystem",
+            "Treehouse"};
     private final String[] firstLabel =
             {"Largest amount of calories",
             "Incorrect total score",
@@ -14,7 +15,8 @@ public class Answer {
             "Completely overlapping pairs",
             "Incorrect top crates",
             "Characters processed before start",
-            "Sum of directories under 100000"};
+            "Sum of directories under 100000",
+            "Visible trees"};
     private final String[] secondLabel =
             {"Total calories of the top three elves",
             "Correct total score",
@@ -22,8 +24,9 @@ public class Answer {
             "Overlapping pairs",
             "Correct top crates",
             "Characters processed before message",
+            "",
             ""};
-    private final int[] stars = {2,2,2,2,2,2,0};
+    private final int[] stars = {2,2,2,2,2,2,0,0};
     private String[] results = {"", ""};
     private int currentDay;
     private String filename;
@@ -69,6 +72,11 @@ public class Answer {
         else if(x == 6){
             Filesystem a = new Filesystem(filename);
             results[0] = String.valueOf(a.getDirectorySum());
+            results[1] = "";
+        }
+        else if(x == 7){
+            Treehouse a = new Treehouse(filename);
+            results[0] = String.valueOf(a.getVisibleTrees());
             results[1] = "";
         }
     }

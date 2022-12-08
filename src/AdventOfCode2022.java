@@ -6,10 +6,11 @@ public class AdventOfCode2022 {
             "input_cleanup.txt",
             "input_crates.txt",
             "input_comm.txt",
-            "input_filesystem.txt"};
+            "input_filesystem.txt",
+            "input_treehouse.txt"};
 
     public static void main(String[] args){
-        Answer x = new Answer(7, filename[6]);
+        Answer x = new Answer(8, filename[7]);
         System.out.println("\n\n\n" + x.getAnswers());
     }
 
@@ -20,6 +21,7 @@ public class AdventOfCode2022 {
         Answer d = new Answer(4, filename[3]);
         Answer e = new Answer(5, filename[4]);
         Answer f = new Answer(6, filename[5]);
-        System.out.println(a.getAnswers() + b.getAnswers() + c.getAnswers() + d.getAnswers() + e.getAnswers() + f.getAnswers());
+        Answer g = new Answer(7, filename[6]);
+        System.out.println(a.getAnswers() + b.getAnswers() + c.getAnswers() + d.getAnswers() + e.getAnswers() + f.getAnswers() + g.getAnswers());
     }
 }
