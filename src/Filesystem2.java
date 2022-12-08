@@ -77,7 +77,7 @@ public class Filesystem2 {
 
     public void getNextLine(){currentLine = tgb.nextLine();}
 
-    public void calculateSizes(){c.getSize();}
+    public void calculateSizes(){}
 
     public void initializeScanner(){
         try {
