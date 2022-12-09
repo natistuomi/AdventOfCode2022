@@ -46,15 +46,15 @@ public class Snake {
     public void moveTail(){
         int difX = hX - tX;
         int difY = hY - tY;
-        if(difY == 0 && difX < -1 || difX > 1){
+        if(difY == 0 && difX == -2 || difX == 2){
             if(difX > 0){tX += 1;}
             else{tX -= 1;}
         }
-        else if(difX == 0 && difY < -1 || difY > 1){
+        else if(difX == 0 && difY == -2 || difY == 2){
             if(difY > 0){tY += 1;}
             else{tY -= 1;}
         }
-        else if(difY > 1 || difY < -1 || difX < -1 || difX > 1){
+        else if(difY == 2 || difY == -2 || difX == -2 || difX == 2){
             if(difX > 0 && difY > 0){
                 tX += 1;
                 tY += 1;
