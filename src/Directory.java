@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Directory {
     private String name;
-    private Directory parent;
     private int size = 0;
+    private Directory parent;
     ArrayList<Files> files = new ArrayList<Files>();
     ArrayList<Directory> directories = new ArrayList<Directory>();
 
@@ -16,23 +16,10 @@ public class Directory {
         this.parent = parent;
     }
 
-    public void addDirectorySize(){
-        for (int i = 0; i < directories.size(); i++) {
-            size += directories.get(i).getSize();
-        }
-    }
-
-    public void addFile(Files x){
-        files.add(x);
-        size += x.getSize();
-    }
+    public void addFile(Files x){files.add(x);}
 
     public void addDirectory(Directory x){
         directories.add(x);
-    }
-
-    public ArrayList<Directory> getDirectories() {
-        return directories;
     }
 
     public Directory getParent() {
@@ -43,8 +30,11 @@ public class Directory {
         return name;
     }
 
-    public int getSize() {
-        addDirectorySize();
-        return size;
+    public int getSize() {return size;}
+
+    public ArrayList<Files> getFiles() {return files;}
+
+    public ArrayList<Directory> getDirectories() {
+        return directories;
     }
 }
