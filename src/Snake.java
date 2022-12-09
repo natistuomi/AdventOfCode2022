@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Snake {
     private Scanner tgb;
     private final String filename;
-    private String currentLine;
     private char direction;
     private int steps;
     private int hX = 0;
@@ -38,10 +37,55 @@ public class Snake {
     }
 
     public void calculateMovement(){
-
+        while(steps != 0){
+            moveHead();
+            moveTail();
+        }
     }
 
-    public void getNextLine(){currentLine = tgb.nextLine();}
+    public void moveTail(){
+        int difX = hX - tX;
+        int difY = hY - tY;
+        if(difY == 0 && difX < -1 || difX > 1){
+            if(difX > 0){tX += 1;}
+            else{tX -= 1;}
+        }
+        else if(difX == 0 && difY < -1 || difY > 1){
+            if(difY > 0){tY += 1;}
+            else{tY -= 1;}
+        }
+        else if(difY > 1 || difY < -1 || difX < -1 || difX > 1){
+            if(difX > 0 && difY > 0){
+                tX += 1;
+                tY += 1;
+            }
+            else if(difX > 0 && difY < 0){
+                tX += 1;
+                tY -= 1;
+            }
+            else if(difX < 0 && difY < 0){
+                tX -= 1;
+                tY -= 1;
+            }
+            else{
+                tX -= 1;
+                tY += 1;
+            }
+        }
+    }
+
+    public void moveHead(){
+        if(direction == 'D'){hY -= 1;}
+        else if(direction == 'L'){hX -= 1;}
+        else if(direction == 'U'){hY += 1;}
+        else{hX += 1;}
+    }
+
+    public void getNextLine(){
+        String currentLine = tgb.nextLine();
+        direction = currentLine.charAt(0);
+        steps = Integer.parseInt(currentLine.substring(2));
+    }
 
     public void initializeScanner(){
         try {
