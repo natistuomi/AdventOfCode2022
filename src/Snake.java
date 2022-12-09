@@ -25,6 +25,7 @@ public class Snake {
                 visited.add(tX + ":" + tY);
             };
         }
+        visitedByTail = visited.size();
     }
 
     public boolean checkPosition(){
@@ -40,45 +41,27 @@ public class Snake {
         while(steps != 0){
             moveHead();
             moveTail();
+            steps -= 1;
         }
     }
 
     public void moveTail(){
-        int difX = hX - tX;
-        int difY = hY - tY;
-        if(difY == 0 && difX == -2 || difX == 2){
-            if(difX > 0){tX += 1;}
-            else{tX -= 1;}
-        }
-        else if(difX == 0 && difY == -2 || difY == 2){
-            if(difY > 0){tY += 1;}
-            else{tY -= 1;}
-        }
-        else if(difY == 2 || difY == -2 || difX == -2 || difX == 2){
-            if(difX > 0 && difY > 0){
-                tX += 1;
-                tY += 1;
-            }
-            else if(difX > 0 && difY < 0){
-                tX += 1;
-                tY -= 1;
-            }
-            else if(difX < 0 && difY < 0){
-                tX -= 1;
-                tY -= 1;
-            }
-            else{
-                tX -= 1;
-                tY += 1;
-            }
-        }
+
     }
 
+    public void moveRight(){tX += 1;}
+
+    public void moveLeft(){tX -= 1;}
+
+    public void moveDown(){tY -= 1;}
+
+    public void moveUp(){tY += 1;}
+
     public void moveHead(){
-        if(direction == 'D'){hY -= 1;}
-        else if(direction == 'L'){hX -= 1;}
-        else if(direction == 'U'){hY += 1;}
-        else{hX += 1;}
+        if(direction == 'D'){hY -= steps;}
+        else if(direction == 'L'){hX -= steps;}
+        else if(direction == 'U'){hY += steps;}
+        else{hX += steps;}
     }
 
     public void getNextLine(){
@@ -90,6 +73,7 @@ public class Snake {
     public void initializeScanner(){
         try {
             tgb = new Scanner(new File(filename));
+            visited.add("0:0");
         } catch (FileNotFoundException e) {
             System.out.println("Can't find file");
         }
