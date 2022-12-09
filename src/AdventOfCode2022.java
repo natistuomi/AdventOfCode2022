@@ -7,10 +7,11 @@ public class AdventOfCode2022 {
             "input_crates.txt",
             "input_comm.txt",
             "input_filesystem.txt",
-            "input_treehouse.txt"};
+            "input_treehouse.txt",
+            "input_snake.txt"};
 
     public static void main(String[] args){
-        Answer x = new Answer(8, filename[7]);
+        Answer x = new Answer(9, filename[8]);
         System.out.println("\n\n\n" + x.getAnswers());
     }
 

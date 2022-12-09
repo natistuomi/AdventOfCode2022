@@ -7,7 +7,8 @@ public class Answer {
             "Crates",
             "Comm",
             "Filesystem",
-            "Treehouse"};
+            "Treehouse",
+            "Snake"};
     private final String[] firstLabel =
             {"Largest amount of calories",
             "Incorrect total score",
@@ -16,7 +17,8 @@ public class Answer {
             "Incorrect top crates",
             "Characters processed before start",
             "Sum of directories under 100000",
-            "Visible trees"};
+            "Visible trees",
+            "Positions visited by tail"};
     private final String[] secondLabel =
             {"Total calories of the top three elves",
             "Correct total score",
@@ -25,8 +27,9 @@ public class Answer {
             "Correct top crates",
             "Characters processed before message",
             "",
+            "",
             ""};
-    private final int[] stars = {2,2,2,2,2,2,0,0};
+    private final int[] stars = {2,2,2,2,2,2,0,0,0};
     private String[] results = {"", ""};
     private int currentDay;
     private String filename;
@@ -77,6 +80,11 @@ public class Answer {
         else if(x == 7){
             Treehouse a = new Treehouse(filename);
             results[0] = String.valueOf(a.getVisibleTrees());
+            results[1] = "";
+        }
+        else if(x == 8){
+            Snake a = new Snake(filename);
+            results[0] = String.valueOf(a.getVisitedByTail());
             results[1] = "";
         }
     }
