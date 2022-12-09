@@ -46,7 +46,20 @@ public class Snake {
     }
 
     public void moveTail(){
+        int dX = hX - tX;
+        int dY = hY - tY;
+        if(dX == 0 || dY == 0){
+            if(dX < -1){moveLeft();}
+            else if(dX > 1){moveRight();}
+            else if(dY < -1){moveDown();}
+            else if(dY > 1){moveUp();}
+        }
+        else if(dX < -1 || dX > 1){
 
+        }
+        else if(dY < -1 || dY > 1){
+
+        }
     }
 
     public void moveRight(){tX += 1;}
